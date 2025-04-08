@@ -1,18 +1,15 @@
 import streamlit as st
 import pandas as pd
 import json
+import os
 import re
 from typing import List, Dict, Any, Tuple, Set, Optional
 from functools import lru_cache
 from snowflake.snowpark.context import get_active_session
 from snowflake.cortex import Complete
 from snowflake.core import Root
-import os
 from dotenv import load_dotenv
 from snowflake.snowpark import Session
-
-# Load environment variables
-load_dotenv()
 
 # Configure pandas display options
 pd.set_option("max_colwidth", None)
@@ -59,7 +56,6 @@ class SnowflakeService:
         # Initialize the search service as before
         self.root = Root(self.session)
         self.search_service = self._initialize_search_service()
-
     
     def _initialize_search_service(self):
         """Initialize the Cortex search service"""
