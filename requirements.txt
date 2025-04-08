@@ -1,6 +1,7 @@
 streamlit
 python
 pandas
+snowflake
 snowflake-ml-python
 snowflake.core
 snowflake-snowpark-python
