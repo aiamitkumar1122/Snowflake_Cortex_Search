@@ -1,8 +1,8 @@
 streamlit
 python
 pandas
-snowflake-ml-python==1.6.2
-snowflake.core==0.9.0
-snowflake-snowpark-python==1.22.1
-snowflake-connector-python==3.3.0
+snowflake-ml-python
+snowflake.core
+snowflake-snowpark-python
+snowflake-connector-python
 functools
