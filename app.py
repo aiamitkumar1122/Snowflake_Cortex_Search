@@ -7,6 +7,12 @@ from functools import lru_cache
 from snowflake.snowpark.context import get_active_session
 from snowflake.cortex import Complete
 from snowflake.core import Root
+import os
+from dotenv import load_dotenv
+from snowflake.snowpark import Session
+
+# Load environment variables
+load_dotenv()
 
 # Configure pandas display options
 pd.set_option("max_colwidth", None)
@@ -37,9 +43,23 @@ class SnowflakeService:
     """Handles all Snowflake-related operations with caching for performance"""
     
     def __init__(self):
-        self.session = get_active_session()
+        # Create connection parameters
+        self.connection_parameters = {
+            "account": os.getenv("SNOWFLAKE_ACCOUNT"),
+            "user": os.getenv("SNOWFLAKE_USER"),
+            "password": os.getenv("SNOWFLAKE_PASSWORD"),
+            "warehouse": os.getenv("SNOWFLAKE_WAREHOUSE"),
+            "database": os.getenv("SNOWFLAKE_DATABASE"),
+            "schema": os.getenv("SNOWFLAKE_SCHEMA")
+        }
+        
+        # Create session
+        self.session = Session.builder.configs(self.connection_parameters).create()
+        
+        # Initialize the search service as before
         self.root = Root(self.session)
         self.search_service = self._initialize_search_service()
+
     
     def _initialize_search_service(self):
         """Initialize the Cortex search service"""
