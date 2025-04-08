@@ -1,4 +1,4 @@
-streamlit==1.26.0
+streamlit
 python==3.09
 pandas==2.1.0
 snowflake-ml-python==1.6.2
