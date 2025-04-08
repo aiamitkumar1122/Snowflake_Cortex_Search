@@ -1,6 +1,6 @@
-streamlit==1.26.0
+streamlit
 python
-pandas==2.1.0
+pandas
 snowflake-ml-python==1.6.2
 snowflake.core==0.9.0
 snowflake-snowpark-python==1.22.1
